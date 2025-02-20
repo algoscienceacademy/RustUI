@@ -1211,6 +1211,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "rust_ui_examples"
+version = "0.1.0"
+dependencies = [
+ "rust_ui",
+]
+
+[[package]]
 name = "rustc-demangle"
 version = "0.1.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"

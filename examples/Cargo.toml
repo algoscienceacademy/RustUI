@@ -1,0 +1,28 @@
+[package]
+name = "rust_ui_examples"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "basic_app"
+path = "src/basic_app.rs"
+
+[[bin]]
+name = "counter"
+path = "src/counter.rs"
+
+[[bin]]
+name = "styled_app"
+path = "src/styled_app.rs"
+
+[[bin]]
+name = "animated_app"
+path = "src/animated_app.rs"
+
+[[bin]]
+name = "responsive_app"
+path = "src/responsive_app.rs"
+
+[dependencies]
+rust_ui = { path = ".." }
