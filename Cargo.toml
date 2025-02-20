@@ -2,7 +2,7 @@
 members = [".", "examples"]
 
 [package]
-name = "Rust_UI"
+name = "rust_native"
 version = "0.1.0"
 edition = "2021"
 authors = ["Shahrear Hossain <shahrear@algoscienceacademy.com>"]
