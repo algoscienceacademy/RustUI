@@ -1,28 +1,21 @@
 [package]
-name = "rust_ui_examples"
-version = "0.1.2"
+name = "rust_native_examples"
+version = "0.1.5"
 edition = "2021"
 publish = false
 
-[[bin]]
+[[example]]
 name = "basic_app"
-path = "src/basic_app.rs"
-
-[[bin]]
-name = "counter"
-path = "src/counter.rs"
-
-[[bin]]
-name = "styled_app"
-path = "src/styled_app.rs"
-
-[[bin]]
-name = "animated_app"
-path = "src/animated_app.rs"
-
-[[bin]]
-name = "responsive_app"
-path = "src/responsive_app.rs"
+path = "basic_app.rs"
 
 [dependencies]
 rust_native = { path = ".." }
+winit = "0.28"
+wgpu = "0.16"
+tokio = { version = "1.28", features = ["full"] }
+
+[target.'cfg(target_os = "android")'.dependencies]
+ndk-glue = "0.7"
+
+[package.metadata.android]
+build_targets = ["aarch64-linux-android", "armv7-linux-androideabi"]

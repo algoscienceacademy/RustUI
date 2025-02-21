@@ -153,3 +153,62 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Rust community
 - Cross-platform UI frameworks that inspired this project
+
+# RustUI Development Server
+
+A development server for RustUI applications with multi-platform support and hot-reloading capabilities.
+
+## Features
+
+- Live reload development server
+- Multi-platform support (Desktop, iOS, Android, Web)
+- Terminal-based UI interface
+- File watching and automatic rebuilding
+
+## Controls
+
+- `r` - Reload/rebuild the current application
+- `s` - Reopen/restart the development server
+- `q` - Quit the development server
+- `1` - Switch to Desktop platform
+- `2` - Switch to iOS platform
+- `3` - Switch to Android platform
+- `4` - Switch to Web platform
+
+## Status Indicators
+
+The server displays build status with color coding:
+- 🟢 Green: Ready/Success
+- 🟡 Yellow: Building in progress
+- 🔴 Red: Error (with error message)
+
+## Requirements
+
+- Rust (latest stable version)
+- Cargo
+- Required dependencies:
+  ```toml
+  [dependencies]
+  notify = "5.0"
+  crossterm = "0.25"
+  ```
+
+## Usage
+
+1. Clone the repository
+2. Run the development server:
+   ```bash
+   cargo run
+   ```
+3. The server will automatically watch for file changes in the current directory
+4. Use the keyboard controls to switch platforms or trigger rebuilds
+
+## Implementation Details
+
+The server consists of two main components:
+- `main.rs`: Terminal UI and user input handling
+- `dev_server.rs`: Development server implementation with platform-specific builds
+
+Current limitations:
+- iOS, Android, and Web implementations are placeholder stubs
+- Only Desktop builds are fully implemented
