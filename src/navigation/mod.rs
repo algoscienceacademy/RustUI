@@ -3,6 +3,7 @@ use std::collections::{VecDeque, HashMap};
 pub struct Navigator {
     route_stack: VecDeque<Route>,
     transitions: HashMap<(RouteType, RouteType), Box<dyn Transition>>,
+    current_route: Option<RouteType>,
 }
 
 #[derive(Clone, Eq, PartialEq)]
@@ -47,6 +48,7 @@ impl Navigator {
         Self {
             route_stack: VecDeque::new(),
             transitions: HashMap::new(),
+            current_route: None,
         }
     }
 
@@ -83,6 +85,16 @@ impl Navigator {
         );
         transition.begin();
         self.route_stack.pop_back()
+    }
+
+    pub fn navigate(&mut self, to: RouteType) {
+        if let Some(from) = &self.current_route {
+            #[allow(unused_variables)]
+            if let Some(_transition) = self.transitions.get(&(from.clone(), to.clone())) {
+                // Transition implementation coming soon
+            }
+        }
+        self.current_route = Some(to);
     }
 }
 

@@ -1,11 +1,17 @@
 use notify::{RecommendedWatcher, RecursiveMode, Watcher};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use std::{
     fs,
-    path::{Path, PathBuf},
+    path::Path,
     process::Command,
     sync::{mpsc::channel, Arc, Mutex},
     time::Instant,
+    io::{stdout, Write},
+};
+use crossterm::{
+    cursor, execute,
+    style::{Color, Print, SetForegroundColor},
+    terminal::{Clear, ClearType},
 };
 
 #[derive(Deserialize)]
@@ -14,6 +20,14 @@ struct ProjectConfig {
     target_platforms: Vec<Platform>,
     #[serde(default)]
     build_command: Option<String>,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize, PartialEq)]
+pub enum Platform {
+    Desktop,
+    IOS,
+    Android,
+    Web,
 }
 
 #[derive(Clone, Debug)]
@@ -28,14 +42,6 @@ pub struct DevServer {
     target_platform: Platform,
     status: Arc<Mutex<BuildStatus>>,
     simulator_windows: Vec<SimulatorWindow>,
-}
-
-#[derive(Clone, Debug)]
-pub enum Platform {
-    Desktop,
-    IOS,
-    Android,
-    Web,
 }
 
 #[allow(dead_code)]
@@ -196,4 +202,58 @@ impl DevServer {
     pub fn get_status(&self) -> BuildStatus {
         self.status.lock().unwrap().clone()
     }
+
+    fn render_ui(&self) -> Result<(), Box<dyn std::error::Error>> {
+        execute!(
+            stdout(),
+            Clear(ClearType::All),
+            cursor::MoveTo(0, 0),
+            SetForegroundColor(Color::Green),
+            Print("RustUI Development Server\n\n"),
+            SetForegroundColor(Color::White),
+            Print(format!("Current Platform: {:?}\n", self.target_platform)),
+            Print("\nControls:\n"),
+            Print("q - Quit | 1 - Desktop Mode\n"),
+        )?;
+
+        let status = self.get_status();
+        let status_color = if status.in_progress {
+            Color::Yellow
+        } else if status.error.is_some() {
+            Color::Red
+        } else {
+            Color::Green
+        };
+
+        execute!(
+            stdout(),
+            SetForegroundColor(status_color),
+            Print(format!(
+                "\nStatus: {}\n",
+                if status.in_progress {
+                    "Building..."
+                } else if status.error.is_some() {
+                    "Error"
+                } else {
+                    "Ready"
+                }
+            )),
+        )?;
+
+        if let Some(error) = &status.error {
+            execute!(
+                stdout(),
+                SetForegroundColor(Color::Red),
+                Print(format!("Error: {}\n", error)),
+            )?;
+        }
+
+        Ok(())
+    }
+}
+
+// Update navigation module to fix warning
+#[allow(unused_variables)]
+pub fn handle_transition(from: &str, to: &str, transition: &str) {
+    // Implementation coming soon
 }
