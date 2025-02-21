@@ -1,4 +1,4 @@
-use crate::dev_server::{BuildStatus, DevServer, Platform};
+use rust_native::dev_server::{BuildStatus, DevServer, Platform};
 use crossterm::{
     cursor, execute,
     style::{Color, Print, SetForegroundColor},

@@ -19,6 +19,7 @@ pub use event::*;
 pub use geometry::*;
 pub use store::Store;
 pub use theme::*;
+pub use dev_server::{BuildStatus, DevServer, Platform};
 
 pub trait Application {
     fn init(&mut self);
