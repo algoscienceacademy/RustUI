@@ -46,7 +46,7 @@ impl View {
         self
     }
 
-    pub fn with_gesture_recognizer<F>(self, f: F) -> Self 
+    pub fn with_gesture_recognizer<F>(self, _f: F) -> Self 
     where 
         F: FnOnce(&mut GestureRecognizer) + 'static 
     {

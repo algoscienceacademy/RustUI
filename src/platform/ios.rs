@@ -1,19 +1,19 @@
 use objc::{msg_send, sel, sel_impl, class};
-use metal::{Device, MTLCreateSystemDefaultDevice};
+use metal::Device;
 use super::Platform;
 use crate::{Application, RustUI};
 
 pub struct IosPlatform {
     device: Device,
-    rust_native: RustUI,
+    rust_ui: RustUI,
 }
 
 impl Platform for IosPlatform {
-    fn init(rust_native: RustUI) -> Self {
-        let device = unsafe { MTLCreateSystemDefaultDevice() };
+    fn init(rust_ui: RustUI) -> Self {
+        let device = Device::system_default().expect("No Metal device found");
         Self { 
             device,
-            rust_native,
+            rust_ui,
         }
     }
 
