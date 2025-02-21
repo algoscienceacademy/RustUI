@@ -1,4 +1,4 @@
-use rust_ui::{
+use rust_native::{
     Application, RustUI, Renderer,
     components::*,
     style::Style,
@@ -18,9 +18,9 @@ impl Application for StyledApp {
 }
 
 fn main() {
-    let rust_ui = RustUI::new();
+    let rust_native = RustUI::new();
     
-    rust_ui.run(|| {
+    rust_native.run(|| {
         let view = View::new()
             .child(
                 Text::new("Welcome")

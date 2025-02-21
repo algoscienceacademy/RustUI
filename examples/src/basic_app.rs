@@ -1,4 +1,4 @@
-use rust_ui::{
+use rust_native::{
     Application, RustUI, Renderer,
     components::{Component, View},
 };
@@ -28,6 +28,6 @@ impl Application for TestApp {
 }
 
 fn main() {
-    let rust_ui = RustUI::new();
-    rust_ui.run(|| Box::new(TestApp::new()));
+    let rust_native = RustUI::new();
+    rust_native.run(|| Box::new(TestApp::new()));
 }

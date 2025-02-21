@@ -1,4 +1,4 @@
-use rust_ui::*;
+use rust_native::*;
 use std::time::Duration;
 
 struct AnimatedApp {
@@ -14,10 +14,10 @@ impl Application for AnimatedApp {
 }
 
 fn main() {
-    let rust_ui = RustUI::new();
+    let rust_native = RustUI::new();
     let theme = create_dark_theme();
     
-    rust_ui.run(|| {
+    rust_native.run(|| {
         let animation = animation::Animation::new(0.0, 1.0, Duration::from_secs(1))
             .with_easing(animation::EasingFunction::EaseInOut);
             

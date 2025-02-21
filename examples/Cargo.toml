@@ -1,6 +1,6 @@
 [package]
 name = "rust_ui_examples"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
 publish = false
 
@@ -25,4 +25,4 @@ name = "responsive_app"
 path = "src/responsive_app.rs"
 
 [dependencies]
-rust_ui = { path = ".." }
+rust_native = { path = ".." }

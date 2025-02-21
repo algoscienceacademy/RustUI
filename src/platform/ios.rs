@@ -5,15 +5,15 @@ use crate::{Application, RustUI};
 
 pub struct IosPlatform {
     device: Device,
-    rust_ui: RustUI,
+    rust_native: RustUI,
 }
 
 impl Platform for IosPlatform {
-    fn init(rust_ui: RustUI) -> Self {
+    fn init(rust_native: RustUI) -> Self {
         let device = unsafe { MTLCreateSystemDefaultDevice() };
         Self { 
             device,
-            rust_ui,
+            rust_native,
         }
     }
 

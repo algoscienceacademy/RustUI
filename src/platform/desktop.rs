@@ -2,12 +2,12 @@ use crate::{Application, RustUI};
 use super::Platform;
 
 pub struct DesktopPlatform {
-    rust_ui: RustUI,
+    rust_native: RustUI,
 }
 
 impl Platform for DesktopPlatform {
-    fn init(rust_ui: RustUI) -> Self {
-        Self { rust_ui }
+    fn init(rust_native: RustUI) -> Self {
+        Self { rust_native }
     }
 
     fn run<F>(self, app: F)

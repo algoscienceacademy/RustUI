@@ -9,7 +9,7 @@ mod web;
 mod desktop;
 
 pub trait Platform {
-    fn init(rust_ui: RustUI) -> Self;
+    fn init(rust_native: RustUI) -> Self;
     fn run<F>(self, app: F) where F: FnOnce() -> Box<dyn Application>;
 }
 
@@ -22,10 +22,10 @@ pub use web::WebPlatform as CurrentPlatform;
 #[cfg(not(any(target_os = "ios", target_os = "android", target_arch = "wasm32")))]
 pub use desktop::DesktopPlatform as CurrentPlatform;
 
-pub fn run<F>(rust_ui: RustUI, app: F)
+pub fn run<F>(rust_native: RustUI, app: F)
 where
     F: FnOnce() -> Box<dyn Application>
 {
-    let platform = CurrentPlatform::init(rust_ui);
+    let platform = CurrentPlatform::init(rust_native);
     platform.run(app);
 }

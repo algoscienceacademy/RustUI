@@ -1,4 +1,4 @@
-use rust_ui::*;
+use rust_native::*;
 
 struct CounterApp {
     view: View,
@@ -23,6 +23,6 @@ impl Application for CounterApp {
 }
 
 fn main() {
-    let rust_ui = RustUI::new();
-    rust_ui.run(|| Box::new(CounterApp::new()));
+    let rust_native = RustUI::new();
+    rust_native.run(|| Box::new(CounterApp::new()));
 }

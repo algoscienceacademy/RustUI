@@ -1,5 +1,5 @@
-use rust_ui::*;
-use rust_ui::{
+use rust_native::*;
+use rust_native::{
     layout::{ResponsiveLayout, Breakpoint},
     navigation::{Navigator, Route},
 };
@@ -25,7 +25,7 @@ impl Application for ResponsiveApp {
 }
 
 fn main() {
-    let rust_ui = RustUI::new();
+    let rust_native = RustUI::new();
     let store = Store::new(AppState {
         counter: 0,
         theme: create_dark_theme(),
@@ -35,7 +35,7 @@ fn main() {
     let store = Rc::new(RefCell::new(store));
     let navigator = Rc::new(RefCell::new(Navigator::new()));
     
-    rust_ui.run(move || {
+    rust_native.run(move || {
         let store_for_view = store.clone();
         let navigator_for_view = navigator.clone();
         let store_for_increment = store.clone();

@@ -1,4 +1,4 @@
-use rust_ui::{
+use rust_native::{
     components::{Button, Component},
     geometry::Point,
 };

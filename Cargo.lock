@@ -1195,8 +1195,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
 
 [[package]]
-name = "rust_ui"
-version = "0.1.0"
+name = "rust_native"
+version = "0.1.2"
 dependencies = [
  "futures",
  "metal",
@@ -1212,9 +1212,9 @@ dependencies = [
 
 [[package]]
 name = "rust_ui_examples"
-version = "0.1.0"
+version = "0.1.2"
 dependencies = [
- "rust_ui",
+ "rust_native",
 ]
 
 [[package]]

@@ -83,10 +83,10 @@ cd www && npm install && npm start
 ### Basic App
 
 ```rust
-use rust_ui::*;
+use rust_native::*;
 
 fn main() {
-    let rust_ui = RustUI::new();
+    let rust_native = RustUI::new();
     rust_ui.run(|| {
         View::new()
             .child(Text::new("Hello, RustUI!"))

@@ -3,11 +3,11 @@ members = [".", "examples"]
 
 [package]
 name = "rust_native"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
 authors = ["Shahrear Hossain <shahrear@algoscienceacademy.com>"]
 description = "A modern, cross-platform UI framework for building native applications"
-documentation = "https://docs.rs/rust_ui"
+documentation = "https://docs.rs/rust_native"
 repository = "https://github.com/algoscienceacademy/RustUI"
 license = "MIT"
 readme = "README.md"
