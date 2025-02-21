@@ -1,0 +1,3 @@
+name = "my-rust-app"
+target_platforms = ["Desktop"]
+build_command = "cargo run --example basic_app"
