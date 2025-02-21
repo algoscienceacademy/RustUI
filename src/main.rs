@@ -1,13 +1,10 @@
-mod dev_server;
-
-use dev_server::BuildStatus;
+use crate::dev_server::{BuildStatus, DevServer, Platform};
 use crossterm::{
     cursor, execute,
     style::{Color, Print, SetForegroundColor},
     terminal::{disable_raw_mode, enable_raw_mode, Clear, ClearType},
     event::{self, Event, KeyCode},
 };
-use dev_server::{DevServer, Platform};
 use std::io::{stdout, Write};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {

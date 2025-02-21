@@ -23,6 +23,10 @@ include = [
     "CHANGELOG.md"
 ]
 
+[lib]
+name = "rust_native"
+path = "src/lib.rs"
+
 [dependencies]
 winit = "0.28"
 wgpu = "0.16"

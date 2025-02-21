@@ -10,6 +10,7 @@ pub mod geometry;
 pub mod store;
 pub mod theme;
 pub mod style;
+pub mod dev_server;
 
 pub use components::*;
 pub use platform::*;
