@@ -36,7 +36,8 @@ impl Button {
 
 impl Component for Button {
     fn render(&self, _renderer: &mut Renderer) {
-        // Implement rendering
+        println!("Rendering button with label: {}", self.label);
+        // TODO: Implement actual rendering using renderer
     }
 
     fn handle_event(&mut self, _event: Event) {

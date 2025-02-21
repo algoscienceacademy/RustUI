@@ -16,6 +16,9 @@ impl Platform for DesktopPlatform {
     {
         let mut app = app();
         app.init();
-        // Desktop event loop implementation
+        
+        let window = self.rust_ui.window();
+        println!("Running desktop app with window size: {:?}", window.dimensions());
+        // Implement event loop
     }
 }

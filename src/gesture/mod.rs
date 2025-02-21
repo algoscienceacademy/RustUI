@@ -33,4 +33,17 @@ impl GestureRecognizer {
     {
         self.handlers.push(Box::new(handler));
     }
+
+    pub fn update(&mut self, delta_time: Duration) {
+        // Update gesture timeouts
+        if self.tap_timeout > Duration::from_millis(0) {
+            self.tap_timeout = self.tap_timeout.saturating_sub(delta_time);
+        }
+        if self.long_press_timeout > Duration::from_millis(0) {
+            self.long_press_timeout = self.long_press_timeout.saturating_sub(delta_time);
+        }
+        if self.double_tap_timeout > Duration::from_millis(0) {
+            self.double_tap_timeout = self.double_tap_timeout.saturating_sub(delta_time);
+        }
+    }
 }

@@ -50,8 +50,21 @@ impl Navigator {
         }
     }
 
-    fn get_transition(&self, _from: Option<&RouteType>, _to: Option<&RouteType>) -> Box<dyn Transition> {
-        Box::new(DefaultTransition)
+    pub fn register_transition(&mut self, from: RouteType, to: RouteType, transition: Box<dyn Transition>) {
+        self.transitions.insert((from, to), transition);
+    }
+
+    fn get_transition(&self, from: Option<&RouteType>, to: Option<&RouteType>) -> Box<dyn Transition> {
+        match (from, to) {
+            (Some(from), Some(to)) => {
+                if let Some(transition) = self.transitions.get(&(from.clone(), to.clone())) {
+                    Box::new(DefaultTransition) // For now, return a new instance since we can't clone trait objects
+                } else {
+                    Box::new(DefaultTransition)
+                }
+            }
+            _ => Box::new(DefaultTransition),
+        }
     }
 
     pub fn push(&mut self, route: Route) {
@@ -73,6 +86,7 @@ impl Navigator {
     }
 }
 
+#[derive(Clone)]
 struct DefaultTransition;
 
 impl Transition for DefaultTransition {

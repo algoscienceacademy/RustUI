@@ -20,6 +20,18 @@ impl Input {
             },
         }
     }
+
+    pub fn set_value(&mut self, value: String) {
+        self.value = value;
+    }
+
+    pub fn get_value(&self) -> &str {
+        if self.value.is_empty() {
+            &self.placeholder
+        } else {
+            &self.value
+        }
+    }
 }
 
 impl Component for Input {

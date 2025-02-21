@@ -38,6 +38,15 @@ impl Window {
             height: 600,
         }
     }
+
+    pub fn resize(&mut self, width: u32, height: u32) {
+        self.width = width;
+        self.height = height;
+    }
+
+    pub fn dimensions(&self) -> (u32, u32) {
+        (self.width, self.height)
+    }
 }
 
 pub struct RustUI {
@@ -57,5 +66,13 @@ impl RustUI {
         F: FnOnce() -> Box<dyn Application> + 'static
     {
         platform::run(self, app);
+    }
+
+    pub fn window(&self) -> &Window {
+        &self.window
+    }
+
+    pub fn renderer(&mut self) -> &mut Renderer {
+        &mut self.renderer
     }
 }
