@@ -87,7 +87,7 @@ use rust_native::*;
 
 fn main() {
     let rust_native = RustUI::new();
-    rust_ui.run(|| {
+    rust_native.run(|| {
         View::new()
             .child(Text::new("Hello, RustUI!"))
             .child(Button::new("Click Me"))
