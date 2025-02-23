@@ -1,36 +1,15 @@
-use crate::Window;
+use crate::style::{Style, Color};
 
-pub struct Renderer {
-    window: Window,
-    frame_count: u64,
-}
+mod default;
+#[cfg(test)]
+mod mock;
 
-impl Renderer {
-    pub fn new(window: &Window) -> Self {
-        Self {
-            window: window.clone(),
-            frame_count: 0,
-        }
-    }
+pub use default::DefaultRenderer;
 
-    pub fn clear(&mut self) {
-        // Implementation for clearing the screen
-    }
-
-    pub fn present(&mut self) {
-        // Implementation for presenting the frame
-    }
-
-    pub fn begin_frame(&mut self) {
-        self.frame_count += 1;
-        // Initialize frame rendering
-    }
-
-    pub fn end_frame(&mut self) {
-        // Finish frame rendering
-    }
-
-    pub fn window(&self) -> &Window {
-        &self.window
-    }
+pub trait Renderer {
+    fn clear(&mut self, color: Color);
+    fn begin_group(&mut self, style: &Style);
+    fn end_group(&mut self);
+    fn draw_text(&mut self, text: &str, style: &Style);
+    fn translate(&mut self, x: f32, y: f32);
 }

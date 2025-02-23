@@ -89,10 +89,8 @@ impl Navigator {
 
     pub fn navigate(&mut self, to: RouteType) {
         if let Some(from) = &self.current_route {
-            #[allow(unused_variables)]
-            if let Some(_transition) = self.transitions.get(&(from.clone(), to.clone())) {
-                // Transition implementation coming soon
-            }
+            // Just check for transition existence
+            self.transitions.contains_key(&(from.clone(), to.clone()));
         }
         self.current_route = Some(to);
     }

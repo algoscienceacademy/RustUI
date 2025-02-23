@@ -6,6 +6,7 @@ pub enum Breakpoint {
     XLarge,   // 1280px+
 }
 
+#[allow(dead_code)]
 pub struct ResponsiveLayout {
     breakpoints: Vec<(f32, Breakpoint)>,
     current: Breakpoint,

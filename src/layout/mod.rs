@@ -3,34 +3,30 @@ mod responsive;
 pub use responsive::*;
 use crate::geometry::Size;
 
-#[derive(Debug, Clone, Copy)]
-pub enum Direction {
-    Horizontal,
-    Vertical,
+#[derive(Clone, Debug, PartialEq)]
+pub enum Layout {
+    Row,
+    Column,
 }
 
-pub struct Layout {
-    direction: Direction,
-    spacing: f32,
+impl Default for Layout {
+    fn default() -> Self {
+        Layout::Column
+    }
 }
+
+pub const DEFAULT_SPACING: f32 = 8.0;
 
 impl Layout {
-    pub fn new(direction: Direction) -> Self {
-        Self {
-            direction,
-            spacing: 8.0,
-        }
-    }
-
-    pub fn calculate_layout(&self, available_space: Size) -> Size {
-        match self.direction {
-            Direction::Horizontal => Size {
-                width: available_space.width - self.spacing,
+    pub fn calculate_size(&self, available_space: Size, spacing: f32) -> Size {
+        match self {
+            Layout::Row => Size {
+                width: available_space.width - spacing,
                 height: available_space.height,
             },
-            Direction::Vertical => Size {
+            Layout::Column => Size {
                 width: available_space.width,
-                height: available_space.height - self.spacing,
+                height: available_space.height - spacing,
             },
         }
     }

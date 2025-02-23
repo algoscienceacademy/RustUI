@@ -1,12 +1,12 @@
 [package]
 name = "rust_native_examples"
-version = "0.1.5"
+version = "0.1.4"
 edition = "2021"
 publish = false
 
 [[example]]
-name = "basic_app"
-path = "basic_app.rs"
+name = "todo_app"
+path = "todo_app.rs"
 
 [dependencies]
 rust_native = { path = ".." }

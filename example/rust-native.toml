@@ -1,3 +1,21 @@
-name = "my-rust-app"
-target_platforms = ["Desktop"]
+name = "rust-native-example"
+target_platforms = ["Desktop", "iOS", "Android", "Web"]
 build_command = "cargo run --example basic_app"
+watch_paths = ["src/", "examples/"]
+
+[desktop]
+window_size = { width = 800, height = 600 }
+
+[ios_config]
+device_name = "iPhone 15"
+ios_version = "17.0"
+runtime = "iOS"
+
+[android_config]
+avd_name = "Pixel_4"
+api_level = 30
+abi = "x86_64"
+
+[web_config]
+port = 8080
+browsers = ["Chrome", "Firefox", "Safari"]

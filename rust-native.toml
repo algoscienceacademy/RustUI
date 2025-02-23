@@ -1,0 +1,25 @@
+name = "rust-ui"
+target_platforms = ["Desktop", "iOS", "Android", "Web"]
+
+[build]
+example = "todo_app"
+
+[desktop]
+window_size = { width = 400, height = 300 }
+
+[ios]
+device_name = "iPhone 15"
+runtime = "iOS 17.0"
+build_target = "aarch64-apple-ios"
+
+[android]
+avd_name = "Pixel_4"
+api_level = 30
+abi = "x86_64"
+build_target = "aarch64-linux-android"
+
+[web]
+port = 8080
+build_target = "wasm32-unknown-unknown"
+browsers = ["Chrome"]
+title = "RustUI Counter"

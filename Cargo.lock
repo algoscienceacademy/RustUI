@@ -1423,7 +1423,7 @@ checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
 
 [[package]]
 name = "rust_native"
-version = "1.3.0"
+version = "1.4.0"
 dependencies = [
  "clap",
  "crossterm",
@@ -1443,7 +1443,7 @@ dependencies = [
 
 [[package]]
 name = "rust_native_examples"
-version = "0.1.5"
+version = "0.1.4"
 dependencies = [
  "ndk-glue",
  "rust_native",
